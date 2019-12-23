@@ -1,0 +1,43 @@
+{
+  "name": "ts-memoize-decorator",
+  "version": "1.0.0",
+  "description": "Simple memoization decorator for TypeScript",
+  "repository": {
+    "url": "https://github.com/dir01/ts-memoize-decorator"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "npm run lint:tsc && npm run lint:prettier:fix && npm run lint:eslint:fix",
+    "lint:prettier:fix": "prettier ./src/*.ts --write",
+    "lint:eslint:fix": "eslint ./src/*.ts --fix",
+    "lint:tsc": "tsc -p tsconfig.json --noEmit",
+    "test": "jest",
+    "test:coverage": "npm run test -- --coverage"
+  },
+  "keywords": [
+    "typescript",
+    "memoize",
+    "decorator"
+  ],
+  "author": "Andrew Zhu",
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-typescript": "^7.7.7",
+    "@types/jest": "^24.0.24",
+    "@types/node": "^12.12.21",
+    "jest": "^24.9.0",
+    "typescript": "^3.7.4"
+  }
+}
