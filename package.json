@@ -1,6 +1,6 @@
 {
   "name": "ts-memoize-decorator",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Simple memoization decorator for TypeScript",
   "repository": {
     "url": "https://github.com/dir01/ts-memoize-decorator"
@@ -13,8 +13,10 @@
     "lint:eslint:fix": "eslint ./src/*.ts --fix",
     "lint:tsc": "tsc -p tsconfig.json --noEmit",
     "test": "jest",
-    "test:coverage": "npm run test -- --coverage"
+    "test:coverage": "npm run test -- --coverage",
+    "prepublish": "npm run build"
   },
+  "files": ["dist/*"],
   "keywords": [
     "typescript",
     "memoize",

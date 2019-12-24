@@ -3,6 +3,9 @@
         "outDir": "./dist/",
         "module": "commonjs",
         "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "sourceMap": true,
         "lib": [
             "ES2015"
         ],
