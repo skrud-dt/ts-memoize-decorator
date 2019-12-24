@@ -60,5 +60,5 @@ class MyClass {
 }
 ```
 
-This rule is ensured by throwing an exception at runtime.
+This rule is enforced by throwing an exception at runtime.
 This is done to ensure that usage of `@Memoize` does not cause memory leaks by referencing potentially heavy objects as a cache keys, and also reduces cache size by providing smallest keys possible (contrary to implementations that choose to construct cache keys using `JSON.stringify`)
