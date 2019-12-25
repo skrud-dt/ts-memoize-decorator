@@ -1,6 +1,6 @@
 {
   "name": "ts-memoize-decorator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple memoization decorator for TypeScript",
   "repository": {
     "url": "https://github.com/dir01/ts-memoize-decorator"

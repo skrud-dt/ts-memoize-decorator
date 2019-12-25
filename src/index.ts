@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 export function Memoize(
-  hashFunction?: (...args: unknown[]) => string,
+  hashFunction?: (...args: any[]) => string,
 ): MethodDecorator {
   return function(target, propertyKey, descriptor) {
     if (descriptor?.value) {
