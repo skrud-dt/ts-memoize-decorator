@@ -177,7 +177,7 @@ to a primitive type, like so: @Memoize((u: User, c: Company)=>\`\${u.id}:\${c.id
       beforeEach(() => spy.mockClear());
 
       class MyClass {
-        @Memoize((a: number, b: number) => `${a}:${b}`)
+        @Memoize({ hashFunction: (a: number, b: number) => `${a}:${b}` })
         public multiply(a: number, b: number) {
           spy();
           return a * b;
@@ -251,5 +251,34 @@ to a primitive type, like so: @Memoize((u: User, c: Company)=>\`\${u.id}:\${c.id
         }
       }).toThrow('Only put a Memoize() decorator on a method or get accessor.');
     });
+  });
+});
+
+describe('custom cache implementation', () => {
+  test('node-lfu-cache', () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const LFU = require('node-lfu-cache');
+
+    const spy = jest.fn();
+
+    class MyClass {
+      @Memoize({ cacheFactory: () => LFU(2) })
+      public getGreeting(name: string) {
+        spy(name);
+        return `Hello, ${name}`;
+      }
+    }
+
+    const instance = new MyClass();
+
+    instance.getGreeting('Alice');
+    instance.getGreeting('Alice');
+    instance.getGreeting('Bob');
+    expect(spy).toHaveBeenCalledTimes(2);
+    instance.getGreeting('Martha');
+    instance.getGreeting('Martha');
+    expect(spy).toHaveBeenCalledTimes(3);
+    instance.getGreeting('Bob');
+    expect(spy).toHaveBeenCalledTimes(4);
   });
 });

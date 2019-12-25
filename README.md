@@ -13,9 +13,29 @@ Simple memoization decorator for TypeScript.
 ## Usage:
 
 ```typescript
-@Memoize(hashFunction?: (...args: any[]) => string | number | boolean)
+type Primitive = string | number | boolean
+
+@Memoize(hashFunction?: (...args: any[]) => Primitive)
 ```
+
+or 
+
+```typescript
+interface Cache {
+  get(key: Primitive): any | undefined;
+  has(key: Primitive): boolean;
+  set(key: Primitive, value: any);
+}
+
+@Memoize({ 
+  hashFunction?: (...args: any[]) => Primitive,
+  cacheFactory?: () => Cache
+}) 
+```
+
 `hashFunction` accepts the same arguments as original method, and should return a value of a primitive type (a string or a number, and not an object of an array) that identifies that set of arguments deterministically (i.e. subsequent calls with an equal arguments will produce the same result).
+
+`cacheFactory` parameter allows you to override default cache (`new Map()`). See tests for example of integration with [node-lfu-cache](https://www.npmjs.com/package/node-lfu-cache)
 
 `hashFunction` may be omitted in the following cases:
 

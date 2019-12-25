@@ -1,6 +1,6 @@
 {
   "name": "ts-memoize-decorator",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Simple memoization decorator for TypeScript",
   "repository": {
     "url": "https://github.com/dir01/ts-memoize-decorator"
@@ -16,7 +16,9 @@
     "test:coverage": "npm run test -- --coverage",
     "prepublish": "npm run build"
   },
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "keywords": [
     "typescript",
     "memoize",
@@ -40,6 +42,7 @@
     "@types/jest": "^24.0.24",
     "@types/node": "^12.12.21",
     "jest": "^24.9.0",
+    "node-lfu-cache": "^5.0.0",
     "typescript": "^3.7.4"
   }
 }
